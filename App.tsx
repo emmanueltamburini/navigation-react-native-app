@@ -1,12 +1,12 @@
 import 'react-native-gesture-handler';
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
-import {SideBasicMenu} from './src/navigation/SideBasicMenu';
+import {SideMenu} from './src/navigation/SideMenu';
 
 export const App = () => {
   return (
     <NavigationContainer>
-      <SideBasicMenu />
+      <SideMenu />
     </NavigationContainer>
   );
 };
