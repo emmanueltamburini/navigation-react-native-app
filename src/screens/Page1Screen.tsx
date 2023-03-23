@@ -71,6 +71,7 @@ const currentStyles = StyleSheet.create({
   },
   bodyText: {
     marginVertical: 20,
+    fontSize: 20,
   },
   button1: {
     backgroundColor: '#5856D6',
