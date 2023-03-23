@@ -38,7 +38,7 @@ export const Page1Screen = ({navigation}: Props) => {
         title="Go page 2"
         onPress={() => navigation.navigate('Page2Screen')}
       />
-      <Text>Navigate with arguments</Text>
+      <Text style={currentStyles.bodyText}>Navigate with arguments</Text>
       <View style={currentStyles.viewContainer}>
         <TouchableOpacity
           style={{...styles.bigButton, ...currentStyles.button1}}
@@ -68,6 +68,9 @@ export const Page1Screen = ({navigation}: Props) => {
 const currentStyles = StyleSheet.create({
   viewContainer: {
     flexDirection: 'row',
+  },
+  bodyText: {
+    marginVertical: 20,
   },
   button1: {
     backgroundColor: '#5856D6',
