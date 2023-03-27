@@ -9,11 +9,11 @@ import {
   createMaterialBottomTabNavigator,
 } from '@react-navigation/material-bottom-tabs';
 import {Tab1Screen} from '../screens/Tab1Screen';
-import {Tab2Screen} from '../screens/Tab2Screen';
 import {StackNavigator} from './StackNavigator';
 import {colors} from '../theme/appTheme';
 import {Platform, Text} from 'react-native';
 import {RouteProp, ParamListBase} from '@react-navigation/native';
+import {TopTapMenu} from './TopTapMenu';
 
 const screenIOSOptions = ({
   route,
@@ -38,7 +38,7 @@ const screenIOSOptions = ({
         iconName = 'T1';
         break;
 
-      case 'Tab2Screen':
+      case 'TopTapMenu':
         iconName = 'T2';
         break;
 
@@ -64,7 +64,7 @@ const screenAndroidOptions = ({
         iconName = 'T1';
         break;
 
-      case 'Tab2Screen':
+      case 'TopTapMenu':
         iconName = 'T2';
         break;
 
@@ -94,9 +94,9 @@ const TabsAndroidMenu = () => {
         component={Tab1Screen}
       />
       <TabAndroid.Screen
-        name="Tab2Screen"
+        name="TopTapMenu"
         options={{title: 'Tab2'}}
-        component={Tab2Screen}
+        component={TopTapMenu}
       />
       <TabAndroid.Screen
         name="StackNavigator"
@@ -121,9 +121,9 @@ const TabsIOSMenu = () => {
         component={Tab1Screen}
       />
       <TabIOS.Screen
-        name="Tab2Screen"
+        name="TopTapMenu"
         options={{title: 'Tab2'}}
-        component={Tab2Screen}
+        component={TopTapMenu}
       />
       <TabIOS.Screen
         name="StackNavigator"
