@@ -2,7 +2,7 @@
 
 ## NavigationApp README
 
-This app is designed to make a React Native app that works with different views an menus.
+This app is designed to make a React Native app that works with different views an menus and also working with icons.
 
 ### Getting started
 

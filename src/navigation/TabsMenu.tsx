@@ -14,6 +14,7 @@ import {colors} from '../theme/appTheme';
 import {Platform, Text} from 'react-native';
 import {RouteProp, ParamListBase} from '@react-navigation/native';
 import {TopTapMenu} from './TopTapMenu';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 const screenIOSOptions = ({
   route,
@@ -30,20 +31,28 @@ const screenIOSOptions = ({
   tabBarLabelStyle: {
     fontSize: 15,
   },
-  tabBarIcon: ({color}: {focused: boolean; color: string; size: number}) => {
-    let iconName: string = '';
-
+  tabBarIcon: ({
+    color,
+    size,
+  }: {
+    focused: boolean;
+    color: string;
+    size: number;
+  }) => {
+    let iconName: JSX.Element = (
+      <Icon name="rocket" size={size} color={color} />
+    );
     switch (route.name) {
       case 'Tab1Screen':
-        iconName = 'T1';
+        iconName = <Icon name="rocket" size={size} color={color} />;
         break;
 
       case 'TopTapMenu':
-        iconName = 'T2';
+        iconName = <Icon name="airplane-outline" size={size} color={color} />;
         break;
 
       case 'StackNavigator':
-        iconName = 'ST';
+        iconName = <Icon name="bookmarks-outline" size={size} color={color} />;
         break;
     }
     return <Text style={{color}}>{iconName}</Text>;
@@ -57,19 +66,18 @@ const screenAndroidOptions = ({
   navigation: any;
 }): MaterialBottomTabNavigationOptions => ({
   tabBarIcon: ({color}: {focused: boolean; color: string}) => {
-    let iconName: string = '';
-
+    let iconName: JSX.Element = <Icon name="rocket" size={24} color={color} />;
     switch (route.name) {
       case 'Tab1Screen':
-        iconName = 'T1';
+        iconName = <Icon name="rocket" size={24} color={color} />;
         break;
 
       case 'TopTapMenu':
-        iconName = 'T2';
+        iconName = <Icon name="airplane-outline" size={24} color={color} />;
         break;
 
       case 'StackNavigator':
-        iconName = 'ST';
+        iconName = <Icon name="bookmarks-outline" size={24} color={color} />;
         break;
     }
     return <Text style={{color}}>{iconName}</Text>;

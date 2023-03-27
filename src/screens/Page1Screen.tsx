@@ -7,19 +7,25 @@ import {
   StyleSheet,
   useWindowDimensions,
 } from 'react-native';
-import {styles} from '../theme/appTheme';
+import {styles, colors} from '../theme/appTheme';
 import {RootStackParams} from '../navigation/StackNavigator';
 import {
   DrawerNavigationProp,
   DrawerScreenProps,
 } from '@react-navigation/drawer';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 interface Props extends DrawerScreenProps<RootStackParams, 'Page1Screen'> {}
 
 const menuButton = (
   navigation: DrawerNavigationProp<RootStackParams, 'Page1Screen', undefined>,
 ): JSX.Element => (
-  <Button title="Menu" onPress={() => navigation.toggleDrawer()} />
+  <TouchableOpacity
+    activeOpacity={0.75}
+    style={currentStyles.menuButton}
+    onPress={() => navigation.toggleDrawer()}>
+    <Icon name="menu-outline" size={30} color={colors.primary} />
+  </TouchableOpacity>
 );
 
 export const Page1Screen = ({navigation}: Props) => {
@@ -48,6 +54,7 @@ export const Page1Screen = ({navigation}: Props) => {
               name: 'Emmanuel',
             })
           }>
+          <Icon name="person-outline" size={30} color={colors.white} />
           <Text style={styles.bigButtonText}>Emmanuel</Text>
         </TouchableOpacity>
         <TouchableOpacity
@@ -58,6 +65,7 @@ export const Page1Screen = ({navigation}: Props) => {
               name: 'Ana',
             })
           }>
+          <Icon name="person-outline" size={30} color={colors.white} />
           <Text style={styles.bigButtonText}>Ana</Text>
         </TouchableOpacity>
       </View>
@@ -78,5 +86,8 @@ const currentStyles = StyleSheet.create({
   },
   button2: {
     backgroundColor: '#FF9427',
+  },
+  menuButton: {
+    marginLeft: 10,
   },
 });
