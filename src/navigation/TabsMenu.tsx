@@ -6,12 +6,44 @@ import {Tab2Screen} from '../screens/Tab2Screen';
 import {StackNavigator} from './StackNavigator';
 import {colors} from '../theme/appTheme';
 import {Text} from 'react-native';
+import {RouteProp, ParamListBase} from '@react-navigation/native';
 
 const Tab = createBottomTabNavigator();
 
-const iconB1 = (props: {focused: boolean; color: string; size: number}) => (
-  <Text style={{color: props.color}}>B1</Text>
-);
+const screenOptions = ({
+  route,
+}: {
+  route: RouteProp<ParamListBase, string>;
+  navigation: any;
+}) => ({
+  tabBarActiveTintColor: colors.primary,
+  tabBarStyle: {
+    borderTopColor: 'red',
+    borderTopWidth: 0,
+    elevation: 0,
+  },
+  tabBarLabelStyle: {
+    fontSize: 15,
+  },
+  tabBarIcon: ({color}: {focused: boolean; color: string; size: number}) => {
+    let iconName: string = '';
+
+    switch (route.name) {
+      case 'Tab1Screen':
+        iconName = 'T1';
+        break;
+
+      case 'Tab2Screen':
+        iconName = 'T2';
+        break;
+
+      case 'StackNavigator':
+        iconName = 'ST';
+        break;
+    }
+    return <Text style={{color}}>{iconName}</Text>;
+  },
+});
 
 export const TabsMenu = () => {
   return (
@@ -20,21 +52,10 @@ export const TabsMenu = () => {
       sceneContainerStyle={{
         backgroundColor: colors.white,
       }}
-      screenOptions={{
-        headerShown: false,
-        tabBarActiveTintColor: colors.primary,
-        tabBarStyle: {
-          borderTopColor: colors.primary,
-          borderTopWidth: 0,
-          elevation: 0,
-        },
-        tabBarLabelStyle: {
-          fontSize: 13,
-        },
-      }}>
+      screenOptions={screenOptions}>
       <Tab.Screen
         name="Tab1Screen"
-        options={{title: 'Tab1', tabBarIcon: iconB1}}
+        options={{title: 'Tab1'}}
         component={Tab1Screen}
       />
       <Tab.Screen
