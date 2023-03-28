@@ -1,4 +1,5 @@
-import React, {createContext} from 'react';
+import React, {createContext, useMemo, useReducer} from 'react';
+import {authReducer} from './AuthReducer';
 
 export interface AuthState {
   isLogging: boolean;
@@ -17,15 +18,23 @@ export interface AuthContextProps {
   signIn: () => void;
 }
 
-const providerValue = {authState: authInitialState, signIn: () => {}};
+const providerValueDummy = {authState: authInitialState, signIn: () => {}};
 
-export const AuthContext = createContext<AuthContextProps>({...providerValue});
+export const AuthContext = createContext<AuthContextProps>({
+  ...providerValueDummy,
+});
 
 export const AuthProvider = ({
   children,
 }: {
   children: JSX.Element | JSX.Element[];
 }) => {
+  const [authState, dispatch] = useReducer(authReducer, authInitialState);
+
+  const signIn = () => dispatch({type: 'signIn'});
+
+  const providerValue = useMemo(() => ({authState, signIn}), [authState]);
+
   return (
     <AuthContext.Provider value={providerValue}>
       {children}
