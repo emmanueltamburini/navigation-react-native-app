@@ -1,4 +1,5 @@
 import React, {createContext} from 'react';
+
 export interface AuthState {
   isLogging: boolean;
   username?: string;
@@ -12,13 +13,13 @@ export const authInitialState: AuthState = {
 };
 
 export interface AuthContextProps {
-  authState?: AuthState;
-  signIn?: () => void;
+  authState: AuthState;
+  signIn: () => void;
 }
 
 const providerValue = {authState: authInitialState, signIn: () => {}};
 
-export const AuthContext = createContext<AuthContextProps>({});
+export const AuthContext = createContext<AuthContextProps>({...providerValue});
 
 export const AuthProvider = ({
   children,
