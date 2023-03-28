@@ -17,12 +17,14 @@ export interface AuthContextProps {
   authState: AuthState;
   signIn: () => void;
   changeFavoriteIcon: (icon: string) => void;
+  logout: () => void;
 }
 
 const providerValueDummy = {
   authState: authInitialState,
   signIn: () => {},
   changeFavoriteIcon: () => {},
+  logout: () => {},
 };
 
 export const AuthContext = createContext<AuthContextProps>({
@@ -42,8 +44,10 @@ export const AuthProvider = ({
     dispatch({type: 'changeFavIcon', payload: icon});
   };
 
+  const logout = () => dispatch({type: 'logout'});
+
   const providerValue = useMemo(
-    () => ({authState, signIn, changeFavoriteIcon}),
+    () => ({authState, signIn, changeFavoriteIcon, logout}),
     [authState],
   );
 
