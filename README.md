@@ -2,7 +2,7 @@
 
 ## NavigationApp README
 
-This app is designed to make a React Native app that works with different views an menus and also working with contexts and &nbsp;icons.
+This app is designed to make a React Native app that works with different views an menus and also working with contexts and icons.
 
 ### Getting started
 
@@ -10,4 +10,4 @@ You must configure your environment to handle react-native, you can check the do
 
 Before that you must run `npm install` to install all dependencies of the app.
 
-And finally you can run `npm run android` or `npm run ios` to compile the app in your device or emulator and run `npm start` to start the app&nbsp;
+And finally you can run `npm run android` or `npm run ios` to compile the app in your device or emulator and run `npm start` to start the app
